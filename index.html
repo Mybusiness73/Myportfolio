@@ -8,6 +8,9 @@
 </head>
 <body>
 
+  <!-- Dark Mode Toggle -->
+  <button id="toggle-dark">🌙 Dark Mode</button>
+
   <!-- Hero Section -->
   <header class="hero">
     <h1>Hello, I'm <span>Sulaimon</span></h1>
@@ -19,7 +22,7 @@
   <section id="about">
     <h2>About Me</h2>
     <p>
-      I'm a freelance web developer with a passion for building modern, responsive, and functional websites. I specialize in custom website development and e-commerce solutions.
+      I'm a freelance web developer who creates fast, modern, and responsive websites. I specialize in custom sites and e-commerce solutions that convert.
     </p>
   </section>
 
@@ -29,22 +32,23 @@
     <div class="service-boxes">
       <div class="box">
         <h3>Custom Websites</h3>
-        <p>Modern and responsive websites tailored to your brand or idea.</p>
+        <p>Beautiful and unique websites made to fit your business.</p>
       </div>
       <div class="box">
         <h3>E-commerce Development</h3>
-        <p>Online stores built to sell products, manage inventory, and accept payments.</p>
+        <p>Full-featured online stores with payment, cart, and admin control.</p>
       </div>
     </div>
   </section>
-    <!-- Portfolio Section -->
+
+  <!-- Portfolio Section -->
   <section id="portfolio">
     <h2>Featured Project</h2>
     <div class="project">
       <img src="asake-preview.jpg" alt="Asake Wears Project" />
       <div class="project-info">
         <h3>Asake Wears</h3>
-        <p>A stylish e-commerce fashion store built to support order tracking, receipt upload, size selection, admin management, and WhatsApp checkout. (In Progress)</p>
+        <p>A stylish fashion store built with cart system, receipt upload, size selection, admin management, and WhatsApp checkout. (In Progress)</p>
         <a href="#" class="btn">View Demo</a>
       </div>
     </div>
@@ -53,15 +57,24 @@
   <!-- Contact Section -->
   <section id="contact">
     <h2>Contact Me</h2>
-    <p>Let’s bring your idea to life. Contact me via WhatsApp or email.</p>
-    <a href="https://wa.me/234XXXXXXXXXX" class="btn">Chat on WhatsApp</a>
-    <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+    <p>Let’s bring your idea to life. Reach me via WhatsApp or email.</p>
+    <a href="https://wa.me/2349132888197" class="btn">Chat on WhatsApp</a>
+    <p>Email: <a href="mailto:salimosulaimon@gmail.com">salimosulaimon@gmail.com</a></p>
   </section>
 
   <!-- Footer -->
   <footer>
     <p>© 2025 Sulaimon. All rights reserved.</p>
   </footer>
+
+  <!-- Dark Mode Script -->
+  <script>
+    const btn = document.getElementById("toggle-dark");
+    btn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      btn.textContent = document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌙 Dark Mode";
+    });
+  </script>
 
 </body>
 </html>
@@ -76,6 +89,7 @@ body {
   background: #fff;
   color: #333;
   line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
 }
 
 header.hero {
@@ -126,10 +140,10 @@ h2 {
   color: #222;
 }
 
-#services .service-boxes {
+.service-boxes {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
 }
 
@@ -141,48 +155,55 @@ h2 {
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-#portfolio .project {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-#portfolio img {
+.project img {
   width: 100%;
   max-width: 500px;
   border-radius: 8px;
+  margin: 20px 0;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  margin-bottom: 15px;
 }
 
-.project-info h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.project-info p {
-  max-width: 600px;
-  margin: 0 auto 20px;
-}
-
-#contact a.btn {
-  margin: 10px 0;
+.project-info {
+  text-align: center;
 }
 
 footer {
   background: #111;
   color: #ccc;
-  text-align: center;
   padding: 25px 10px;
+  text-align: center;
   font-size: 14px;
 }
 
-/* Mobile Responsive */
-@media (max-width: 600px) {
-  header.hero h1 {
-    font-size: 2rem;
-  }
+#toggle-dark {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: #444;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 1000;
+}
 
+.dark-mode {
+  background: #121212;
+  color: #eee;
+}
+
+.dark-mode .box,
+.dark-mode header.hero {
+  background: #1e1e1e;
+  color: #eee;
+}
+
+.dark-mode footer {
+  background: #111;
+}
+
+@media (max-width: 600px) {
   .service-boxes {
     flex-direction: column;
     align-items: center;
@@ -192,7 +213,7 @@ footer {
     width: 90%;
   }
 
-  #portfolio img {
+  .project img {
     max-width: 90%;
   }
 }
